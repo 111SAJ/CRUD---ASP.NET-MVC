@@ -1,0 +1,69 @@
+﻿@model crudMVC.Context.Employee
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="text-center mb-4 mt-2">Employee Update</h2>
+
+
+
+<div class="container">
+<a class="btn btn-sm btn-outline-secondary shadow" href="@Url.Action("Index", "Employee")">Back</a>
+    <div class="card shadow">
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+
+                @Html.HiddenFor(x => x.EmployeeId)
+
+                <div class="form-group">
+                    <label>Name</label>
+                    @Html.ValidationMessageFor(x => x.EmployeeName, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.EmployeeName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    @Html.ValidationMessageFor(x => x.EmployeeEmail, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.EmployeeEmail, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Aadhar Card Number</label>
+                    @Html.ValidationMessageFor(x => x.AadharCardNumber, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.AadharCardNumber, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    @Html.ValidationMessageFor(x => x.ContactNumber, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.ContactNumber, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    @Html.ValidationMessageFor(x => x.Department, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.Department, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Designation</label>
+                    @Html.ValidationMessageFor(x => x.Designation, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.Designation, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger", @rows = "10" })
+                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Pin Code</label>
+                    @Html.ValidationMessageFor(x => x.PinCode, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.PinCode, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Date Of Birth</label>
+                    @Html.ValidationMessageFor(x => x.DOB, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.DOB, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                </div>
+                <button class="btn btn-sm btn-success" type="submit">Submit</button>
+            }
+        </div>
+    </div>
+</div>

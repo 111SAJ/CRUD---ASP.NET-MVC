@@ -1,0 +1,44 @@
+﻿@model List<crudMVC.Context.Employee>
+
+@{
+    ViewBag.Title = "List Employee";
+}
+
+<h2 class="text-center mb-4 mt-2">Employee List</h2>
+
+
+<a class="btn btn-sm btn-outline-secondary shadow" href="@Url.Action("Create", "Employee")">Add New</a>
+<table class="table table-hover table-responsive">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Aadhar Number</th>
+        <th>Contact</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Address</th>
+        <th>Pin Code</th>
+        <th>Date Of Birth</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td>@employee.EmployeeName</td>
+            <td>@employee.EmployeeEmail</td>
+            <td>@employee.AadharCardNumber</td>
+            <td>@employee.ContactNumber</td>
+            <td>@employee.Department</td>
+            <td>@employee.Designation</td>
+            <td>@employee.Address</td>
+            <td>@employee.PinCode</td>
+            <td>@(employee.DOB?.ToString("dd-MM-yyyy"))</td>
+            <td style="min-width: 100px;">
+                <a href="@Url.Action("Edit", new {@employee.EmployeeId})" class="tn btn-sm btn-info">Edit</a>
+                <a href="@Url.Action("Delete", new {@employee.EmployeeId})" class="tn btn-sm btn-danger">Trash</a>
+            </td>
+        </tr>
+    }
+</table>
+
